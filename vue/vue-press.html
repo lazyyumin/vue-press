@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue-press | blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="my blog">
+    
+    <link rel="preload" href="/vue-press/assets/css/0.styles.01740a45.css" as="style"><link rel="preload" href="/vue-press/assets/js/app.d6846ee3.js" as="script"><link rel="preload" href="/vue-press/assets/js/2.a88fcfb3.js" as="script"><link rel="preload" href="/vue-press/assets/js/15.645475d9.js" as="script"><link rel="prefetch" href="/vue-press/assets/js/10.6babf98d.js"><link rel="prefetch" href="/vue-press/assets/js/11.71c9a455.js"><link rel="prefetch" href="/vue-press/assets/js/12.14c61439.js"><link rel="prefetch" href="/vue-press/assets/js/13.51744605.js"><link rel="prefetch" href="/vue-press/assets/js/14.6b6712e5.js"><link rel="prefetch" href="/vue-press/assets/js/3.5d877e2a.js"><link rel="prefetch" href="/vue-press/assets/js/4.b2bbed76.js"><link rel="prefetch" href="/vue-press/assets/js/5.e91e9ec6.js"><link rel="prefetch" href="/vue-press/assets/js/6.4743570c.js"><link rel="prefetch" href="/vue-press/assets/js/7.f148b95f.js"><link rel="prefetch" href="/vue-press/assets/js/8.4546d080.js"><link rel="prefetch" href="/vue-press/assets/js/9.35ca8355.js">
+    <link rel="stylesheet" href="/vue-press/assets/css/0.styles.01740a45.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-press/" class="home-link router-link-active"><!----> <span class="site-name">blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/vue-press/vue/" aria-current="page" class="sidebar-link">vue docs</a></li><li><a href="/vue-press/vue/vue-press.html" aria-current="page" class="active sidebar-link">vue-press 学习</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-press/vue/vue-press.html#base" class="sidebar-link">base</a></li><li class="sidebar-sub-header"><a href="/vue-press/vue/vue-press.html#sidebar侧边栏" class="sidebar-link">sidebar侧边栏</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-press/vue/vue-press.html#sidebardepth" class="sidebar-link">sidebarDepth</a></li><li class="sidebar-sub-header"><a href="/vue-press/vue/vue-press.html#为不同页面单独配置导航栏" class="sidebar-link">为不同页面单独配置导航栏</a></li><li class="sidebar-sub-header"><a href="/vue-press/vue/vue-press.html#sidebar重命名" class="sidebar-link">sidebar重命名</a></li></ul></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-press"><a href="#vue-press" class="header-anchor">#</a> vue-press</h1> <h2 id="base"><a href="#base" class="header-anchor">#</a> base</h2> <p>  
+默认为/
+如果想部署到github或者gitee上，需要把base修改为仓库名</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">base</span><span class="token operator">:</span> <span class="token string">'/'</span>   <span class="token comment">//  default</span>
+  <span class="token comment">//base: '/&lt;REPO NAME&gt;'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="sidebar侧边栏"><a href="#sidebar侧边栏" class="header-anchor">#</a> sidebar侧边栏</h2> <h3 id="sidebardepth"><a href="#sidebardepth" class="header-anchor">#</a> sidebarDepth</h3> <p>  vue-press的sidebar生成的目录默认只能自动捕获二级标题。
+可以设置sidebarDepth来改变捕获深度,设置范围是0-2，0表示禁止,1自动捕获二级标题,2自动捕获二级和三级标题</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//  config.js</span>
+<span class="token literal-property property">themeConfig</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">sidebarDepth</span><span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="为不同页面单独配置导航栏"><a href="#为不同页面单独配置导航栏" class="header-anchor">#</a> 为不同页面单独配置导航栏</h3> <p>可以在sidebar里设置路径</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//  themeConfig</span>
+<span class="token literal-property property">sidebar</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token comment">//  写法1</span>
+  <span class="token string-property property">'/path1/'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'first'</span> <span class="token comment">//  /path1/first.md</span>
+    <span class="token string">'second'</span>  <span class="token comment">//  /path1/second.md</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token comment">//  写法2</span>
+  <span class="token string-property property">'/path2/'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'title'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">collapsable</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'导航'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span><span class="token string">'react-1'</span><span class="token punctuation">,</span> <span class="token string">'第一节'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+  <span class="token comment">//  /必须写在最后</span>
+  <span class="token string-property property">'/'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">''</span>  <span class="token comment">// /README.md</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h3 id="sidebar重命名"><a href="#sidebar重命名" class="header-anchor">#</a> sidebar重命名</h3> <p>可以把链接的文字写成一个数组的形式来进行重命名</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token literal-property property">sidebar</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">[</span><span class="token string">'/pages-a'</span><span class="token punctuation">,</span> <span class="token string">'rename'</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue-press/vue/" class="prev router-link-active">
+        vue docs
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vue-press/assets/js/app.d6846ee3.js" defer></script><script src="/vue-press/assets/js/2.a88fcfb3.js" defer></script><script src="/vue-press/assets/js/15.645475d9.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>项目相关问题 | blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="my blog">
+    
+    <link rel="preload" href="/vue-press/assets/css/0.styles.01740a45.css" as="style"><link rel="preload" href="/vue-press/assets/js/app.d6846ee3.js" as="script"><link rel="preload" href="/vue-press/assets/js/2.a88fcfb3.js" as="script"><link rel="preload" href="/vue-press/assets/js/11.71c9a455.js" as="script"><link rel="prefetch" href="/vue-press/assets/js/10.6babf98d.js"><link rel="prefetch" href="/vue-press/assets/js/12.14c61439.js"><link rel="prefetch" href="/vue-press/assets/js/13.51744605.js"><link rel="prefetch" href="/vue-press/assets/js/14.6b6712e5.js"><link rel="prefetch" href="/vue-press/assets/js/15.645475d9.js"><link rel="prefetch" href="/vue-press/assets/js/3.5d877e2a.js"><link rel="prefetch" href="/vue-press/assets/js/4.b2bbed76.js"><link rel="prefetch" href="/vue-press/assets/js/5.e91e9ec6.js"><link rel="prefetch" href="/vue-press/assets/js/6.4743570c.js"><link rel="prefetch" href="/vue-press/assets/js/7.f148b95f.js"><link rel="prefetch" href="/vue-press/assets/js/8.4546d080.js"><link rel="prefetch" href="/vue-press/assets/js/9.35ca8355.js">
+    <link rel="stylesheet" href="/vue-press/assets/css/0.styles.01740a45.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-press/" class="home-link router-link-active"><!----> <span class="site-name">blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/vue-press/program/" aria-current="page" class="active sidebar-link">项目相关问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-press/program/#echarts自适应" class="sidebar-link">echarts自适应</a></li><li class="sidebar-sub-header"><a href="/vue-press/program/#小程序登录流程" class="sidebar-link">小程序登录流程</a></li><li class="sidebar-sub-header"><a href="/vue-press/program/#微信支付流程" class="sidebar-link">微信支付流程</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="项目相关问题"><a href="#项目相关问题" class="header-anchor">#</a> 项目相关问题</h1> <h2 id="echarts自适应"><a href="#echarts自适应" class="header-anchor">#</a> echarts自适应</h2> <p>页面使用到 <code>echarts</code> 实现一个或多个图表的绘制，但是在页面尺寸变化后，<code>echarts</code> 图表不会自适应重绘，
+导致 <code>echarts</code> 图表超出了对应 DOM 的宽度和高度或者左右宽度不一致，视觉效果差。
+造成该问题的主要问题是 <code>DOM resize</code> 后 <code>echarts</code> 不能自动重绘，需要手动调用 <code>echarts</code> 的 <code>resize()</code> 方法。
+<br>
+解决办法:
+<br>
+自定义指令</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> elementResizeDetectorMaker <span class="token keyword">from</span> <span class="token string">&quot;element-resize-detector&quot;</span>
+<span class="token keyword">const</span> echarts <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'echarts'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">install</span><span class="token punctuation">(</span><span class="token parameter">Vue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'resize'</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+      <span class="token function">bind</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        el<span class="token punctuation">[</span>handler<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> chart <span class="token operator">=</span> echarts<span class="token punctuation">.</span><span class="token function">getInstanceByDom</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+          chart<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">elementResizeDetectorMaker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listenTo</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> el<span class="token punctuation">[</span>handler<span class="token punctuation">]</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="小程序登录流程"><a href="#小程序登录流程" class="header-anchor">#</a> 小程序登录流程</h2> <ol><li>使用 <code>wx.login()</code> 和 <code>wx.getUserProfile()</code> 获取 <code>code</code> 和用户信息</li> <li>后端拿到 <code>code</code> 去腾讯服务器获取 <code>openid</code></li> <li>后端对比 <code>openid</code> 是否存在来存储用户信息</li> <li>返回前端登录状态</li></ol> <h2 id="微信支付流程"><a href="#微信支付流程" class="header-anchor">#</a> 微信支付流程</h2> <ol><li>将商品信息及价格发送给后端</li> <li>后端调用微信支付接口创建订单，微信返回预付订单</li> <li>后端生成签名支付信息，返回支付参数</li> <li>使用 <code>wx.requestPayment()</code> 发起支付</li> <li>轮询查询支付状态</li> <li>展示支付消息</li></ol></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/vue-press/assets/js/app.d6846ee3.js" defer></script><script src="/vue-press/assets/js/2.a88fcfb3.js" defer></script><script src="/vue-press/assets/js/11.71c9a455.js" defer></script>
+  </body>
+</html>

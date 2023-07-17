@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>包管理工具 | blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="my blog">
+    
+    <link rel="preload" href="/vue-press/assets/css/0.styles.01740a45.css" as="style"><link rel="preload" href="/vue-press/assets/js/app.d6846ee3.js" as="script"><link rel="preload" href="/vue-press/assets/js/2.a88fcfb3.js" as="script"><link rel="preload" href="/vue-press/assets/js/10.6babf98d.js" as="script"><link rel="prefetch" href="/vue-press/assets/js/11.71c9a455.js"><link rel="prefetch" href="/vue-press/assets/js/12.14c61439.js"><link rel="prefetch" href="/vue-press/assets/js/13.51744605.js"><link rel="prefetch" href="/vue-press/assets/js/14.6b6712e5.js"><link rel="prefetch" href="/vue-press/assets/js/15.645475d9.js"><link rel="prefetch" href="/vue-press/assets/js/3.5d877e2a.js"><link rel="prefetch" href="/vue-press/assets/js/4.b2bbed76.js"><link rel="prefetch" href="/vue-press/assets/js/5.e91e9ec6.js"><link rel="prefetch" href="/vue-press/assets/js/6.4743570c.js"><link rel="prefetch" href="/vue-press/assets/js/7.f148b95f.js"><link rel="prefetch" href="/vue-press/assets/js/8.4546d080.js"><link rel="prefetch" href="/vue-press/assets/js/9.35ca8355.js">
+    <link rel="stylesheet" href="/vue-press/assets/css/0.styles.01740a45.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-press/" class="home-link router-link-active"><!----> <span class="site-name">blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-press/package/" aria-current="page" class="active sidebar-link">包管理工具</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-press/package/#package-json中-和-的区别" class="sidebar-link">package.json中^和~的区别</a></li><li class="sidebar-sub-header"><a href="/vue-press/package/#npm、yarn、pnpm的区别" class="sidebar-link">npm、yarn、pnpm的区别</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="包管理工具"><a href="#包管理工具" class="header-anchor">#</a> 包管理工具</h1> <h2 id="package-json中-和-的区别"><a href="#package-json中-和-的区别" class="header-anchor">#</a> package.json中^和~的区别</h2> <ul><li>&quot;name&quot;: &quot;版本号&quot;,表示安装指定这个版本的的包</li> <li>&quot;name&quot;: &quot;^版本号&quot;,表示安装当前主要版本号及以上的,但是不安装下一个大版本号
+例如:&quot;vue&quot;: &quot;^2.7&quot;,表示安装2.7及以上主要版本,但是不安装3.0</li> <li>&quot;name&quot;: &quot;~版本号&quot;,表示安装当前次要版本的最新版
+例如:&quot;antd&quot;: &quot;~1.1.0&quot;,表示安装1.1.x的最新版,但是不安装1.2.x版本</li></ul> <h2 id="npm、yarn、pnpm的区别"><a href="#npm、yarn、pnpm的区别" class="header-anchor">#</a> npm、yarn、pnpm的区别</h2> <p>npm3+和yarn都对node_modules的包进行了平铺，导致了幽灵依赖问题</p> <ul><li>幽灵依赖: 当你在dependents里面声明了一个包a,包a又依赖包b,平铺导致了没有声明包b也能在项目中引用,如果你在项目中应用了b包卸载了a包就会导致项目出现问题</li> <li>依赖分身: 当你在dependents里面声明了两个包a,b,但是a、b都依赖c,且c的版本不相同,那么无论你把c的哪个版本放在顶层,都会导致另一个版本被重复下载</li></ul> <p>pnpm 通过链接(links)与全局存储空间（store）管理的不同项目的 node_modules 依赖。
+硬盘根目录会有全局store，包是从全局 store 硬连接到虚拟 store 的，这里的虚拟 store 就是 node_modules/.pnpm。
+然后node_modules/.pnpm的包之间通过软链接来相互依赖。</p> <p>pnpm缺点:</p> <ul><li>因为所有的项目都依赖一个store,所以修改一个项目的node_modules中的文件会影响全局</li> <li>解决方法</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//  运行patch命令生成临时文件</span>
+pnpm patch axios@<span class="token number">0.21</span><span class="token number">.4</span>
+<span class="token comment">//  给出地址</span>
+You can now edit the following folder xxxxxxxxxxx
+<span class="token comment">//  打开地址进行修改</span>
+<span class="token comment">//  合并</span>
+pnpm patch<span class="token operator">-</span>commit <span class="token operator">+</span> xxxxxxx生成的地址
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/vue-press/assets/js/app.d6846ee3.js" defer></script><script src="/vue-press/assets/js/2.a88fcfb3.js" defer></script><script src="/vue-press/assets/js/10.6babf98d.js" defer></script>
+  </body>
+</html>
